@@ -2,7 +2,7 @@
   "name": "sourcegraph-contributors-extension",
   "title": "Contributors",
   "description": "Displays a bar chart showing the top contributors to a file.",
-  "publisher": "dadlerj",
+  "publisher": "dan",
   "activationEvents": [
     "*"
   ],

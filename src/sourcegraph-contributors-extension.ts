@@ -1,13 +1,14 @@
 import * as sourcegraph from 'sourcegraph'
+import { getFileContributors } from './contributors'
 
 export function activate(): void {
     const pv = sourcegraph.app.createPanelView('contributors.panel')
     pv.content = 'Contributors'
-    pv.title = 'Open a file to see contributors'
+    pv.title = 'Contributors'
 
     sourcegraph.workspace.onDidOpenTextDocument.subscribe(doc => {
-        pv.content = doc.uri
+        pv.title = 'Contributors'
+
+        getFileContributors(doc.uri).then(contributors => pv.content = JSON.stringify(contributors), err => console.log(err))
     })
 }
-
-// Learn what else is possible by visiting the [Sourcegraph extension documentation](https://github.com/sourcegraph/sourcegraph-extension-docs)
