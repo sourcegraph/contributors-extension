@@ -1,8 +1,8 @@
 {
   "name": "sourcegraph-contributors-extension",
-  "title": "Contributors",
+  "title": "WIP: File contributors",
   "description": "Displays a bar chart showing the top contributors to a file.",
-  "publisher": "dan",
+  "publisher": "dadlerj",
   "activationEvents": [
     "*"
   ],
@@ -15,7 +15,7 @@
           "contributors.panel"
         ],
         "category": "Contributors",
-        "title": "Show contriutors",
+        "title": "Show contributors",
         "actionItem": {
           "label": "Contributors",
           "description": "Show top contributors to this file"

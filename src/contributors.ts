@@ -3,8 +3,12 @@ import { resolveURI } from './uri'
 import { memoizeAsync } from './util/memoizeAsync'
 
 export interface Contributor {
-    name: string
-    displayName: string
+    person: {
+        name: string
+        email: string
+        displayName: string
+    }
+    count: number
 }
 
 export const getFileContributors = memoizeAsync(
@@ -17,14 +21,16 @@ async function queryFileContributors(uri: string): Promise<Contributor[]> {
     const { data, errors } = await sourcegraph.commands.executeCommand(
         'queryGraphQL',
         `
-query GitContributors($repo: String!) {
+query GitContributors($repo: String!, $path: String!) {
 	repository(name: $repo) {
         contributors(path: $path) {
             nodes {
                 person {
+                    email
                     name
                     displayName
                 }
+                count
             }
 		}
 	}
